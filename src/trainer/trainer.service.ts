@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, ModifyResult } from 'mongoose';
 import { Trainer } from './schemas/trainer.schema';
 
 @Injectable()
@@ -37,7 +37,7 @@ export class TrainerService {
       .exec();
   }
 
-  async remove(id: string): Promise<any> {
+  async remove(id: string): Promise<ModifyResult<Trainer>> {
     return this.trainerModel.findOneAndDelete({ _id: id }).exec();
   }
 }

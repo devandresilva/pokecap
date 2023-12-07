@@ -9,6 +9,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     PkbModule,
+    PkmModule,
+    TrainerModule,
     MongooseModule.forRoot(
       'mongodb+srv://andresilva1:m7LBDuooLAkPtRbk@cluster0.a4jtjer.mongodb.net/?retryWrites=true&w=majority',
     ),

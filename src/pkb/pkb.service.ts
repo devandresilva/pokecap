@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, ModifyResult } from 'mongoose';
 import { Pkb } from './schemas/pkb.schema';
 
 @Injectable()
@@ -26,7 +26,7 @@ export class PkbService {
       .exec();
   }
 
-  async remove(id: string): Promise<any> {
+  async remove(id: string): Promise<ModifyResult<Pkb>> {
     return this.pkbModel.findOneAndDelete({ _id: id }).exec();
   }
 }
