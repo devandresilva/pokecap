@@ -7,7 +7,12 @@ import { PkbModule } from './pkb/pkb.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [PkmModule, TrainerModule, PkbModule, MongooseModule.forRoot('mongodb+srv://andresilva1:m7LBDuooLAkPtRbk@cluster0.a4jtjer.mongodb.net/?retryWrites=true&w=majority')],
+  imports: [
+    PkbModule,
+    MongooseModule.forRoot(
+      'mongodb+srv://andresilva1:m7LBDuooLAkPtRbk@cluster0.a4jtjer.mongodb.net/?retryWrites=true&w=majority',
+    ),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
