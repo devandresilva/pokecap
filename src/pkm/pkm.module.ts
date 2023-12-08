@@ -8,5 +8,7 @@ import { PkmSchema } from './schemas/pkm.schema';
   controllers: [PkmController],
   providers: [PkmService],
   imports: [MongooseModule.forFeature([{ name: 'Pkm', schema: PkmSchema }])],
+  exports: [PkmService]
 })
 export class PkmModule {}
+

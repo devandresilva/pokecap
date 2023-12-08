@@ -5,6 +5,7 @@ import { PkmModule } from './pkm/pkm.module';
 import { TrainerModule } from './trainer/trainer.module';
 import { PkbModule } from './pkb/pkb.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { PkmService } from './pkm/pkm.service';
 
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     PkmModule,
     TrainerModule,
     MongooseModule.forRoot(
-      'mongodb+srv://andresilva1:m7LBDuooLAkPtRbk@cluster0.a4jtjer.mongodb.net/?retryWrites=true&w=majority',
+      'mongodb+srv://valmirfrancisco1:en0BSnDlOJYNajDj@pokecluster.gh2ylz6.mongodb.net/?retryWrites=true&w=majority',
     ),
   ],
   controllers: [AppController],

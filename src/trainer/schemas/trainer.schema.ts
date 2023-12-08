@@ -6,9 +6,6 @@ export type TrainerDocument = HydratedDocument<Trainer>;
 @Schema()
 export class Trainer {
   @Prop({ required: true })
-  id: number;
-
-  @Prop({ required: true })
   name: string;
 
   @Prop({ required: true })

@@ -17,7 +17,7 @@ export class PkmService {
   }
 
   async findOne(id: string): Promise<Pkm> {
-    return this.pkmModel.findById(id).exec();
+    return this.pkmModel.findOne({id: id}).exec();
   }
 
   async update(id: string, updatedPkm: Pkm): Promise<Pkm> {
