@@ -6,6 +6,7 @@ import axios from 'axios';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   const pkmService = app.get(PkmService);
 
   const baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
