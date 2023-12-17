@@ -29,6 +29,11 @@ export class TrainerController {
     return this.trainerService.findOne(id);
   }
 
+  @Get('find/:name')
+  findbyName(@Param('name') name: string) {
+    return this.trainerService.findByName(name);
+  }
+
   @Put(':id')
   update(@Param('id') id: string, @Body() updatedTrainer: Trainer) {
     return this.trainerService.update(id, updatedTrainer);

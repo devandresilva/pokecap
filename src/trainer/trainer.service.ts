@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable,  ConflictException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ModifyResult } from 'mongoose';
 import { Trainer } from './schemas/trainer.schema';
@@ -11,7 +11,13 @@ export class TrainerService {
 
   async create(trainer: Trainer): Promise<Trainer> {
     const createdTrainer = new this.trainerModel(trainer);
-    return createdTrainer.save();
+    const exist_trainer = await this.trainerModel.findOne({name: createdTrainer.name}).exec();
+    if (exist_trainer){
+      throw new ConflictException(`Trainer with name ${createdTrainer.name} already exists`);
+    }
+    else {
+      return createdTrainer.save();
+    }
   }
 
   async findAll(): Promise<Trainer[]> {
@@ -20,6 +26,10 @@ export class TrainerService {
 
   async findOne(id: string): Promise<Trainer> {
     return this.trainerModel.findById(id).exec();
+  }
+
+  async findByName(name: string): Promise<Trainer> {
+    return this.trainerModel.findOne({name: name}).exec();
   }
 
   async getTeam(id: string): Promise<number[]> {
