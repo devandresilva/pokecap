@@ -16,13 +16,13 @@ export class PkbService {
     return this.pkbModel.find().exec();
   }
 
-  async findOne(id: string): Promise<Pkb> {
-    return this.pkbModel.findById(id).exec();
+  async findOne(id: string, owner: string): Promise<Pkb> {
+    return this.pkbModel.findOne({id: id, owner: owner}).exec();
   }
 
   async update(id: string, updatedPkb: Pkb): Promise<Pkb> {
     return this.pkbModel
-      .findByIdAndUpdate(id, updatedPkb, { new: true })
+      .findOneAndUpdate({id: id, owner: updatedPkb.owner}, updatedPkb, { new: true, upsert: true })
       .exec();
   }
 

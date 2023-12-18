@@ -24,9 +24,9 @@ export class PkbController {
     return this.pkbService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pkbService.findOne(id);
+  @Get(':owner/:id')
+  findOne(@Param('id') id: string, @Param('owner') owner: string) {
+    return this.pkbService.findOne(id, owner);
   }
 
   @Put(':id')
